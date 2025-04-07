@@ -33,6 +33,7 @@ function displayTodo() {
 function deleteTodo(index) {
     todoList.splice(index, 1);
     displayTodo();
+    updateLocalStorage();
 }
 
 function updateLocalStorage() {
