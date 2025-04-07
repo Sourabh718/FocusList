@@ -33,7 +33,7 @@
 
     .input-group {
       display: flex;
-      justify-content: center0;
+      justify-content: center;
       flex-wrap:wrap;
       gap: 10px;
     }
@@ -62,7 +62,10 @@
       background-color: #74ebd5;
       color: #333;
     }
-
+     button:active{
+      transform: scale(0.95);
+      background-color: #39796d;
+    }
     ul {
       list-style: none;
       margin-top: 20px;
