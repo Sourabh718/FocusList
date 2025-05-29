@@ -1,4 +1,4 @@
- let todoList = [];
+let todoList = [];
 
 function myTodo() {
     let inputElement = document.getElementById('todo1');
@@ -6,24 +6,34 @@ function myTodo() {
     inputElement.value = "";
 
     if (todoElement !== "") {
-        todoList.push(todoElement);
+        let date = new Date();
+        let formattedDate = `${date.getDate()}/${date.getMonth() + 1}/${date.getFullYear()}`;
+        let formattedTime =`${date.getHours()}:${date.getMinutes()}`;
+
+        let todoItem = {
+            text: todoElement,
+            date: formattedDate,
+            time: formattedTime
+        };
+
+        todoList.push(todoItem);
         updateLocalStorage();
         displayTodo();
     }
 }
 
 function displayTodo() {
-    let date = new Date();
-    let formattedDate = `${date.getDate()}/${date.getMonth() + 1}/${date.getFullYear()}`;
+   
 
     let displayItem = document.getElementById('my-todo');
     displayItem.innerHTML = ""; 
 
-    for (let i = 0; i < todoList.length; i++) {
+    for (let i=todoList.length-1; i>0; i--) {
         displayItem.innerHTML += `
         <li>
-             <div class='task-text'>${todoList[i]}
-                <div class="task-date">${formattedDate}</div> 
+             <div class='task-text'>${todoList[i].text}
+                <div class="task-date">${todoList[i].date}</div>
+                <div class="task-date">${todoList[i].time}</div> 
             </div>
             <button class="delete-btn" onclick="deleteTodo(${i})">Delete</button>
        </li>`;
